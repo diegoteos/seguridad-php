@@ -1,0 +1,3 @@
+https://clientes.atlanticadigital.net/knowledgebase/305/Bloquear-acceso-a-archivos-con-htaccess.html
+
+https://www.linuxteaching.com/article/htaccess_deny_file_access
