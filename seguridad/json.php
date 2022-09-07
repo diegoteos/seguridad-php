@@ -6,4 +6,4 @@ var_dump($datos);
 echo '<br><br>';
 $hola = explode(".", "https://zyro.com/es/blog/ejemplos-de-paginas-web-en-html-sencillas/");
 
-var_dump($hola);
+var_dump($hola); // para ver el tipo y los datos devueltos
