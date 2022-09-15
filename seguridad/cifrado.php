@@ -1,24 +1,14 @@
 <?php
-$pass = 'holaj';
+$cifrar = 'Hola';
 
 echo '<br>';
-$password = password_hash($pass, PASSWORD_DEFAULT, ['cost' => 5]);
-$p = password_hash($pass, PASSWORD_DEFAULT, ['cost' => 5]);
+$contraseña_cifrada = password_hash($cifrar, PASSWORD_DEFAULT, ['cost' => 10]);
 echo '<br>';
-echo $password;
-echo '<br>';
-echo $p;
+echo $contraseña_cifrada;
 echo '<br>';
 
 
-if (password_verify($pass, $password)){  // veerificamos si la contraseña ingresada es igual a la segunda que debe estar en la base de datos
-    echo "las contraseñas son igugales";
-    echo '<br>';
-} else  {
-    echo "las contraseñas no son idugales";
-    echo '<br>';
-}
-if (password_verify('holaj', $p)){  // veerificamos si la contraseña ingresada es igual a la segunda que debe estar en la base de datos
+if (password_verify($cifrar, $contraseña_cifrada)){  // veerificamos si la contraseña ingresada es igual a la segunda que debe estar en la base de datos
     echo "las contraseñas son igugales";
     echo '<br>';
 } else  {
