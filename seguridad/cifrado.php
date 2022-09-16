@@ -1,5 +1,5 @@
 <?php
-$cifrar = 'Hola';
+$cifrar = 'usuario';
 
 echo '<br>';
 $contraseña_cifrada = password_hash($cifrar, PASSWORD_DEFAULT, ['cost' => 10]);
