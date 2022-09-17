@@ -1,45 +1,22 @@
 <?php
-$cifrar = 'usuario';
+
+$pass = $_POST['contraseña'];
 
 echo '<br>';
-$contraseña_cifrada = password_hash($cifrar, PASSWORD_DEFAULT, ['cost' => 10]);
+$contraseña_cifrada = password_hash('admin', PASSWORD_DEFAULT, ['cost' => 10]);
 echo '<br>';
 echo $contraseña_cifrada;
 echo '<br>';
 
 
-if (password_verify($cifrar, $contraseña_cifrada)){  // veerificamos si la contraseña ingresada es igual a la segunda que debe estar en la base de datos
+if (password_verify($pass, $contraseña_cifrada)){  // veerificamos si la contraseña ingresada es igual a la segunda que debe estar en la base de datos
     echo "las contraseñas son igugales";
     echo '<br>';
+    $pass = password_hash($pass, PASSWORD_DEFAULT, ['cost' => 10]);
+    echo $pass;
 } else  {
     echo "las contraseñas no son idugales";
     echo '<br>';
-}
-
-
-/*
-
-<?php
-
-// validamos que vengan los dos parametros con los nombres que les corresponden 
-if (isset($_POST['usuario']) && isset($_POST['contraseña'])) {
-    $usuario = $_POST['usuario'];
-    $contraseña = $_POST['contraseña'];
-
-    $user = 'diego';  // Usuario por defecto
-    $pass = 'diego';  // Contraseña por defecto
-
-    $pass = password_hash($pass, PASSWORD_DEFAULT, ['costo' => 10]); // ciframos el password por defecto
-
-    $contraseña = password_hash($contraseña, PASSWORD_DEFAULT, ['costo' => 10]); // ciframos el la contraseña recibida 
-
-
-    if (password_verify($pass, $contraseña)) {  // verificamos si la contraseña ingresada es igual a la contraseña por defecto
-
-        echo 'Felicidades, has ingresado correctamente... <br>';
-    } else {
-        $mensaje = "La el usuario o la contraseña no coincide";
-    }
 }
 
 
