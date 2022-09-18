@@ -1,6 +1,6 @@
 <?php
-
-$pass = $_POST['contraseña'];
+if (isset($_POST['contraseña'])) {
+    $pass = $_POST['contraseña'];
 
 echo '<br>';
 $contraseña_cifrada = password_hash('admin', PASSWORD_DEFAULT, ['cost' => 10]);
@@ -9,14 +9,17 @@ echo $contraseña_cifrada;
 echo '<br>';
 
 
-if (password_verify($pass, $contraseña_cifrada)){  // veerificamos si la contraseña ingresada es igual a la segunda que debe estar en la base de datos
+if (password_verify($pass, $contraseña_cifrada)){  // verificamos si la contraseña ingresada es igual a la segunda que debe estar en la base de datos
     echo "las contraseñas son igugales";
     echo '<br>';
     $pass = password_hash($pass, PASSWORD_DEFAULT, ['cost' => 10]);
     echo $pass;
 } else  {
-    echo "las contraseñas no son idugales";
+    echo "las contraseñas no son iguales";
     echo '<br>';
+}
+} else {
+echo "Ingrese sus credenciales de acceso";    
 }
 
 
