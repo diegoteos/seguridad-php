@@ -1,19 +1,15 @@
 <?php
-if (isset($_POST['contraseña'])) { // si existe el dato recibido mediante POST con el nombre contraseña, se ingresa a la condicion
+if (isset($_POST['contraseña']) && isset($_POST['usuario'])) { // si existe el dato recibido mediante POST con el nombre contraseña, se ingresa a la condicion
     $pass = $_POST['contraseña'];
-
+    $usuario = $_POST['usuario'];
+    $user = 'admin';
     echo '<br>';
     $contraseña_cifrada = password_hash('admin', PASSWORD_DEFAULT, ['cost' => 10]);
     echo '<br>';
-    echo $contraseña_cifrada;
-    echo '<br>';
 
 
-    if (password_verify($pass, $contraseña_cifrada)) {  // verificamos si la contraseña ingresada es igual a la segunda que debe estar en la base de datos
-        echo "las contraseñas son igugales";
-        echo '<br>';
-        $pass = password_hash($pass, PASSWORD_DEFAULT, ['cost' => 10]);
-        echo $pass;
+    if (password_verify($pass, $contraseña_cifrada) && $usuario == $user) {  // verificamos si la contraseña ingresada es igual a la segunda que debe estar en la base de datos
+        header("location: index.php");
     } else {
         $mensaje = '<div class="alert alert-danger" role="alert">
         Usuario o contraseña incorrecto.
@@ -69,7 +65,7 @@ if (isset($_POST['contraseña'])) { // si existe el dato recibido mediante POST 
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary">Ingresar</button>
-                            
+
                         </form>
 
 
