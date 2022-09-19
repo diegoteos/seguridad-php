@@ -1,25 +1,29 @@
 <?php
-if (isset($_POST['contraseña'])) {
+if (isset($_POST['contraseña'])) { // si existe el dato recibido mediante POST con el nombre contraseña, se ingresa a la condicion
     $pass = $_POST['contraseña'];
 
-echo '<br>';
-$contraseña_cifrada = password_hash('admin', PASSWORD_DEFAULT, ['cost' => 10]);
-echo '<br>';
-echo $contraseña_cifrada;
-echo '<br>';
+    echo '<br>';
+    $contraseña_cifrada = password_hash('admin', PASSWORD_DEFAULT, ['cost' => 10]);
+    echo '<br>';
+    echo $contraseña_cifrada;
+    echo '<br>';
 
 
-if (password_verify($pass, $contraseña_cifrada)){  // verificamos si la contraseña ingresada es igual a la segunda que debe estar en la base de datos
-    echo "las contraseñas son igugales";
-    echo '<br>';
-    $pass = password_hash($pass, PASSWORD_DEFAULT, ['cost' => 10]);
-    echo $pass;
-} else  {
-    echo "las contraseñas no son iguales";
-    echo '<br>';
-}
+    if (password_verify($pass, $contraseña_cifrada)) {  // verificamos si la contraseña ingresada es igual a la segunda que debe estar en la base de datos
+        echo "las contraseñas son igugales";
+        echo '<br>';
+        $pass = password_hash($pass, PASSWORD_DEFAULT, ['cost' => 10]);
+        echo $pass;
+    } else {
+        $mensaje = '<div class="alert alert-danger" role="alert">
+        Usuario o contraseña incorrecto.
+      </div>';
+        echo '<br>';
+    }
 } else {
-echo "Ingrese sus credenciales de acceso";    
+    $mensaje = '<div class="alert alert-success" role="alert">
+    Ingrese sus credenciales para continuar...
+  </div>';
 }
 
 
@@ -50,11 +54,9 @@ echo "Ingrese sus credenciales de acceso";
                         Ingreso al sistema
                     </div>
                     <div class="card-body">
-                        <?php if (isset($mensaje)) { ?>
-                            <div class="alert alert-danger" role="alert">
-                                <?php echo $mensaje; ?>
-                            </div>
-                        <?php } ?>
+                        <?php if (isset($mensaje)) {
+                            echo $mensaje;
+                        } ?>
                         <form method="post">
                             <div class="form-group">
                                 <label>Usuario:</label>
@@ -67,6 +69,7 @@ echo "Ingrese sus credenciales de acceso";
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary">Ingresar</button>
+                            
                         </form>
 
 
