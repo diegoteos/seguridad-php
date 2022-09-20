@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+if (isset($_SESSION['id'])) {
+    header('Location: index.php');
+}
 if (isset($_POST['contraseña']) && isset($_POST['usuario'])) { // si existe el dato recibido mediante POST con el nombre contraseña, se ingresa a la condicion
     $pass = $_POST['contraseña'];
     $usuario = $_POST['usuario'];
@@ -9,6 +14,8 @@ if (isset($_POST['contraseña']) && isset($_POST['usuario'])) { // si existe el 
 
 
     if (password_verify($pass, $contraseña_cifrada) && $usuario == $user) {  // verificamos si la contraseña ingresada es igual a la segunda que debe estar en la base de datos
+        $_SESSION['usuario'] = $user;
+        $_SESSION['tipo'] = 1;
         header("location: index.php");
     } else {
         $mensaje = '<div class="alert alert-danger" role="alert">
