@@ -56,12 +56,12 @@ if (isset($_POST['contraseña']) && isset($_POST['usuario'])) { // si existe el 
                         <form method="post">
                             <div class="form-group">
                                 <label>Usuario:</label>
-                                <input type="txt" class="form-control" name="usuario" aria-describedby="emailHelp" placeholder="Ingrese su usuario">
+                                <input type="txt" class="form-control" name="usuario" aria-describedby="emailHelp" placeholder="Ingrese su usuario" required>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label>Contraseña:</label>
-                                <input type="password" class="form-control" name="contraseña" placeholder="Ingresa tu contraseña">
+                                <input type="password" class="form-control" name="contraseña" placeholder="Ingresa tu contraseña" required>
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary">Ingresar</button>
