@@ -4,9 +4,7 @@ include_once 'error-reporting.php';
 $ip = $ip_add = $_SERVER['REMOTE_ADDR'];
 date_default_timezone_set('America/Guatemala');
 $fecha = date("d-m-Y H:i:s");
-
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
-
 
 function getPlatform($user_agent) {
    $plataformas = array(
@@ -36,10 +34,7 @@ function getPlatform($user_agent) {
 
 
 
-
 $SO = getPlatform($user_agent);
-
-
 function getBrowser($user_agent){
 
     if(strpos($user_agent, 'MSIE') !== FALSE)
@@ -69,8 +64,7 @@ function getBrowser($user_agent){
 
 
 
-
-$para      = 'correo@hotmail.com';
+$para      = '@hotmail.com';
 $titulo    = 'Visita a la pagina principal';
 $mensaje   = "Visita  desde la IP: $ip Hoy: $fecha del dispositivo con sistema operativo: $SO con navegador: $nav";
 $cabeceras = 'From: sistema' . "\r\n" .
